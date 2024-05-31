@@ -19,6 +19,7 @@ impl OpenSomething {
     }
 }
 
+// TODO: なんか変な気がする
 impl TryFrom<BaseSomething> for OpenSomething {
     type Error = anyhow::Error;
 
@@ -32,11 +33,14 @@ impl TryFrom<BaseSomething> for OpenSomething {
     }
 }
 
-pub fn convert_base_to_open(base: &BaseSomething, open_reason: &str) -> OpenSomething {
-    OpenSomething {
+pub fn convert_base_to_open(
+    base: BaseSomething,
+    open_reason: &str,
+) -> Result<OpenSomething, anyhow::Error> {
+    Ok(OpenSomething {
         id: base.id.clone(),
         name: base.name.clone(),
         open_id: Id::gen(),
         open_reason: open_reason.to_string(),
-    }
+    })
 }
