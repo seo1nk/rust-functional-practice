@@ -14,3 +14,10 @@ impl BaseSomething {
         }
     }
 }
+
+#[test]
+fn test_new() {
+    let something_name = "test";
+    let base = BaseSomething::new(something_name);
+    assert_eq!(base.name, something_name.to_string())
+}
