@@ -1,25 +1,27 @@
-use domain::something::{
-    base_something::BaseSomething,
-    open_something::{convert_base_to_open, OpenSomething},
-};
+use domain::something::{base_something::BaseSomething, open_something::convert_base_to_open};
 
 fn main() {
-    // Baseオブジェクトを作る
-    let base_something = BaseSomething::new("test_name");
-    println!("base_something.name: {}!", base_something.name);
+    println!("workflow: accepted");
+    accepted_workflow();
 
-    // BaseオブジェクトをConvert関数でOpenオブジェクトに変える
-    let open_something_convert: OpenSomething =
-        convert_base_to_open(&base_something, "test_reason");
-    println!(
-        "open_something.open_reason: {}!",
-        open_something_convert.open_reason
-    );
+    println!("workflow: rejected");
+}
 
-    // BaseオブジェクトをTryIntoでOpenオブジェクトに変える
-    let open_something_try_into: OpenSomething = base_something.try_into().unwrap();
-    println!(
-        "open_something.open_reason: {}!",
-        open_something_try_into.open_reason
-    );
+fn accepted_workflow() {
+    // 1. Baseオブジェクトを作る
+    let base = BaseSomething::new("test_name");
+    println!(" - base.name: {}!", base.name);
+
+    // 2. BaseオブジェクトをConvert関数でOpenオブジェクトに変える
+    let open = match convert_base_to_open(base, "test_open_reason") {
+        Ok(open) => open,
+        Err(e) => panic!("{}", e),
+    };
+    println!(" - open.open_reason: {}!", open.open_reason);
+
+    // 3. OpenオブジェクトがAcceptされ、Acceptedオブジェクトに変わる
+    // TODO
+
+    // 4. Acceptedオブジェクトが役目を果たし、Closeオブジェクトになる
+    // TODO
 }
