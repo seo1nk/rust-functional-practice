@@ -27,4 +27,12 @@ rejected --> [*]
   - base something
   - open id
   - open reason
+- accepted something
+  - base something
+  - accepted id
+  - accepted reason id
+- close something
+  - base something
+  - close id
+  - close datetime
 
