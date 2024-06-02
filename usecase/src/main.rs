@@ -1,6 +1,6 @@
 use domain::something::{
     accepted_something::convert_open_to_accepted, base_something::BaseSomething,
-    open_something::convert_base_to_open,
+    close_something::convert_accepted_to_close, open_something::convert_base_to_open,
 };
 
 fn main() {
@@ -8,6 +8,7 @@ fn main() {
     accepted_workflow();
 
     // println!("workflow: rejected");
+    println!("End!");
 }
 
 fn accepted_workflow() {
@@ -33,5 +34,9 @@ fn accepted_workflow() {
     );
 
     // 4. Acceptedオブジェクトが役目を果たし、Closeオブジェクトになる
-    // TODO
+    let close = match convert_accepted_to_close(base) {
+        Ok(close) => close,
+        Err(e) => panic!("{e}"),
+    };
+    println!(" - close.close_at: {}", close.close_at);
 }
