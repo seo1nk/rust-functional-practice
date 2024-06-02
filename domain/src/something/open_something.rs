@@ -34,7 +34,7 @@ impl TryFrom<BaseSomething> for OpenSomething {
 }
 
 pub fn convert_base_to_open(
-    base: BaseSomething,
+    base: &BaseSomething,
     open_reason: &str,
 ) -> Result<OpenSomething, anyhow::Error> {
     Ok(OpenSomething {
