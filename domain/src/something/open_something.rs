@@ -19,19 +19,19 @@ impl OpenSomething {
     }
 }
 
-// TODO: なんか変な気がする
-impl TryFrom<BaseSomething> for OpenSomething {
-    type Error = anyhow::Error;
+// // TryFromでは特有の値を追加しての状態遷移を実装できなさそう
+// impl TryFrom<BaseSomething> for OpenSomething {
+//     type Error = anyhow::Error;
 
-    fn try_from(base: BaseSomething) -> Result<Self, Self::Error> {
-        Ok(OpenSomething {
-            id: base.id,
-            name: base.name,
-            open_id: Id::gen(),
-            open_reason: "try_from".to_string(),
-        })
-    }
-}
+//     fn try_from(base: BaseSomething) -> Result<Self, Self::Error> {
+//         Ok(OpenSomething {
+//             id: base.id,
+//             name: base.name,
+//             open_id: Id::gen(),
+//             open_reason: "try_from".to_string(),
+//         })
+//     }
+// }
 
 pub fn convert_base_to_open(
     base: &BaseSomething,
