@@ -16,8 +16,7 @@ rejected --> reopen
 reopen --> accepted
 accepted --> close
 rejected --> close
-accepted --> [*]
-rejected --> [*]
+close --> [*]
 ```
 
 一旦こんな感じだとする
