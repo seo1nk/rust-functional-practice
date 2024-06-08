@@ -14,6 +14,8 @@ open --> accepted
 open --> rejected
 rejected --> reopen
 reopen --> accepted
+accepted --> close
+rejected --> close
 accepted --> [*]
 rejected --> [*]
 ```
