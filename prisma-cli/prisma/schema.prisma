@@ -1,0 +1,33 @@
+datasource db {
+  provider = "mysql"
+  url      = "mysql://user:password@127.0.0.1:3306/practice"
+}
+
+generator client {
+  provider = "cargo prisma"
+  // previewFeatures = ["views"]
+  output   = "../src/prisma.rs"
+}
+
+model base_something {
+  id   String @id
+  name String
+
+  open_something open_something[]
+}
+
+model open_something {
+  id          String @id
+  open_reason String
+  base_id     String
+
+  base_something base_something @relation(fields: [base_id], references: [id])
+}
+
+// // Viewテーブル作れないかな〜
+// view open_something_view {
+//     base_id String @unique
+//     open_id String @unique
+//     name  String
+//     open_reason String
+// }
