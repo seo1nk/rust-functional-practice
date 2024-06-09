@@ -4,4 +4,5 @@ exclude = ["prisma-cli"]
 members = [
     "domain",
     "usecase",
+    "infrastructure",
 ]

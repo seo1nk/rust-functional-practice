@@ -1,0 +1,11 @@
+[package]
+name = "infrastructure"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+domain = { path = "../domain" }
+
+async-trait = { version = "0.1" }
+sqlx = { version = "0.7", features = ["mysql", "chrono"]}
+anyhow = { version = "1" }
