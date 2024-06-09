@@ -34,12 +34,12 @@ impl OpenSomething {
 // }
 
 pub fn convert_base_to_open(
-    base: &BaseSomething,
+    base: BaseSomething,
     open_reason: &str,
 ) -> Result<OpenSomething, anyhow::Error> {
     Ok(OpenSomething {
-        id: base.id.clone(),
-        name: base.name.clone(),
+        id: base.id,
+        name: base.name,
         open_id: Id::gen(),
         open_reason: open_reason.to_string(),
     })

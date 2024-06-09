@@ -1,4 +1,4 @@
-use super::{super::id::Id, base_something::BaseSomething};
+use super::{super::id::Id, accepted_something::AcceptedSomething, base_something::BaseSomething};
 use anyhow::anyhow;
 use chrono::{DateTime, Utc};
 
@@ -10,13 +10,15 @@ pub struct CloseSomething {
     pub close_at: DateTime<Utc>,
 }
 
-pub fn convert_accepted_to_close(base: BaseSomething) -> Result<CloseSomething, anyhow::Error> {
+pub fn convert_accepted_to_close(
+    accepted: AcceptedSomething,
+) -> Result<CloseSomething, anyhow::Error> {
     if 1 < 0 {
         return Err(anyhow!("unreachable error"));
     }
     Ok(CloseSomething {
-        id: base.id.clone(),
-        name: base.name.clone(),
+        id: accepted.id,
+        name: accepted.name,
         close_id: Id::gen(),
         close_at: Utc::now(),
     })
